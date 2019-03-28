@@ -1,0 +1,68 @@
+############################### README ################################
+
+Author: Matthew Watson
+Version: 1.0
+Date: March 28th, 2019
+Description: Uses immunofluorescent images to quantify and visualize subcellular protein localization. Provides to examples. We provide and example using images of rat mesenchymal stem cells (rMSCs) cultured on polycacrylamide gels with elastic moduli of 5 kPa and 35 kPa.
+
+########################## RUNNING THE CODE ##########################
+
+
+Example: 35 kPa rMSCs
+
+Data collection:
+	1. Creat a folder with all the images of 35 kPa rMSCS and the following .m files.
+		a. GFP_find_COM.m
+		b. nuclei_find_COM.m
+		c. Cell_object_Nuclei_COM.m
+		d. all_cells_protein_data.m
+		e. all_cells_nuclei_data.m
+		f. histogram_plot_all_cells.m
+		g. histogram_plot_individual_cells.m
+		h. heatmap_all_cell.m
+		i. mean_intensity_radial_position.m
+
+	2. Segment GFP images
+		a. Open GFP_find_COM.m. 
+		b. Modify the file name such that it reads "35kPa_rMSC_well1_w2GFP Widefield_s2.tiff." 
+		c. Adjust the threshold until a good binarized image of the stain is obtained. 
+		d. Run the script to find segment cells into objects and find their center of mass. Data is saved as "GFP_35kPA_COM.mat"
+	
+	3. Segment Nuclei images
+		a. Open nuclei_find_COM.m. 
+		b. Modify the file name such that it reads either "35kPa_rMSC_well1_w1DAPI Widefield_s2.tiff.""
+		c. Adjust the threshold until a good binarized image of the stain is obtained. 
+		d. Run the script to find segment nuclei into objects and find their center of mass. Data is saved as "Nuclei_35kPa_COM.mat"
+
+	4. Replace Cell Object COM with Nuclei Object COM
+		a. Open Cell_object_Nuclei_COM.m (optional): Run this script to replace cell object COM with corresponding nuclei object COM. 
+		b. Load both Nuclei_35kPa_COM.mat and GFP_35kPA_COM.mat in lines 12 and 13.
+		c. Run script to replace cell object COM with nuclei object COM. Data is saved as "GFP_with_Nuclei_35kPa_COM.mat"
+
+	5. Collect protein intensities and locations
+		a. Open all_cells_protein_data.m
+		b. Load in GFP_with_Nuclei_35kPa_COM.mat in line 14.
+		c. Change the stain image name to "35kPa_rMSC_well1_w3TRITC Widefield_s2.TIF" in line 15.
+		d. Run the script to collect intenisty data from all cells. Data is saved for individual cells as "all_cell_#_35kPa_protein.mat"
+
+	6. Collect nuclei intensities and locations
+		a. Open all_cells_nuclei_data.m (optional): Run this script to collect data for nuclei stain.
+		b. a. Load in GFP_with_Nuclei_35kPa_COM.mat in line 14.
+		c. Change the stain image name to "35kPa_rMSC_well1_w1DAPI Widefield_s2.TIF" in line 15.
+		d. Run the script to collect intenisty data from all cells. Data is saved for individual cells as "all_cell_#_35kPa_protein.mat"
+
+Data Processing:
+	7. Bar Plot
+		a. Open histogram_plot_all_cells.m
+		b. Run the script to generate a plot of intensities values vs. radial positions for all cells in the image. 
+
+	8. Heatmap plot
+		a. Open heatmap_all_cell.m
+		b. Run the script to generate a heatmap of average intensities vs. radial and angular position. Also generates of heatmap of STD of intensites at radial and angular positions. 
+
+	9. Radial Postion of Mean Protein Intensity 
+		a. Open histogram_plot_individual_cells.m.
+		b. Run script to save histogram data for individual cells as "all_cell_#_35kPA_Histogram.mat"
+		c. Open mean_intensity_radial_position.m
+		d. Run script. Outputs variable named "data_for_excel." The first column contains the cell object number. The second column contains the normalized radial position of the mean protein intensity. 
+
