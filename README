@@ -3,7 +3,7 @@
 Author: Matthew Watson
 Version: 1.0
 Date: March 28th, 2019
-Description: Uses immunofluorescent images to quantify and visualize subcellular protein localization. Provides to examples. We provide and example using images of rat mesenchymal stem cells (rMSCs) cultured on polycacrylamide gels with elastic moduli of 5 kPa and 35 kPa.
+Description: Uses immunofluorescent images to quantify and visualize subcellular protein localization. Provides two examples. We provide and example using images of rat mesenchymal stem cells (rMSCs) cultured on polycacrylamide gels with elastic moduli of 5 kPa and 35 kPa.
 
 ########################## RUNNING THE CODE ##########################
 
